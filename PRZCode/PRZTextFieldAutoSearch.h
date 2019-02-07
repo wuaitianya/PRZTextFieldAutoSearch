@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PRZTextFieldAutoSearch : UIView
+@property (nonatomic,strong)UITextField* textfield;
 @property (nonatomic,strong) void(^requestBlock)(NSString* textString);
 /**
  销毁定时器的方法

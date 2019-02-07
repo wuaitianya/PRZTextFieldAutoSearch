@@ -10,7 +10,6 @@
 @interface PRZTextFieldAutoSearch()<UITextFieldDelegate>
 @property (nonatomic,strong)NSTimer *scheduleTimer;
 @property (nonatomic,assign) NSInteger count;
-@property (nonatomic,strong)UITextField* txtfld;
 @end
 @implementation PRZTextFieldAutoSearch
 
@@ -42,7 +41,7 @@
     txtfld.clearButtonMode = UITextFieldViewModeWhileEditing;
     txtfld.delegate = self;
     [self addSubview:txtfld];
-    self.txtfld = txtfld;
+    self.textfield = txtfld;
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
@@ -63,9 +62,9 @@
     //   0.4  7  = 0.8      0.2   8 = 0.6     0.1  10 = 0.5
     //    0.4 *（7-5）= 0.8; 整体容错率 以及 反应率   该值越小，输入停顿后等待请求时间越短
     
-    if (self.txtfld.text.length > 0 && self.count == 10) {
+    if (self.textfield.text.length > 0 && self.count == 10) {
         if (self.requestBlock) {
-            self.requestBlock(self.txtfld.text);
+            self.requestBlock(self.textfield.text);
         }
     }
     
